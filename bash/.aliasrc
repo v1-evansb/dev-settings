@@ -8,6 +8,7 @@ alias bea='cd /c/BEA92/'
 alias bp='cd /c/BEA92/projects'
 
 ### Git                        ######
+alias grv='git remote -v'
 alias grso='git remote show origin'
 alias gcl='git clone'
 
@@ -16,7 +17,7 @@ alias gu='git add -u'
 
 alias gc='git commit'
 alias gca='git commit --amend'
-alias gcaa='git commit --amend --author "Barry Evans <barry.evans@mandg.co.uk>"'
+alias gcaa='git commit --amend --author "Barry Evans <barryevans80@gmail.com>"'
 alias gcad='GIT_COMMITTER_DATE="`date`" git commit --amend --date "`date`"'
 alias grb='git rebase'
 alias grbi='git rebase -i'
@@ -59,10 +60,16 @@ alias gspp='git stash;git pull;git stash pop;'
 alias grh='git reset --hard'
 
 alias grm='git rebase master'
+alias grmi='git rebase master -i'
+alias grom='git rebase origin/master'
+alias gromi='git rebase origin/master -i'
+
+
 alias grd='git rebase develop'
 alias grdi='git rebase develop -i'
 alias grod='git rebase origin/develop'
 alias grodi='git rebase origin/develop -i'
+
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 
@@ -82,9 +89,6 @@ alias mci='mvn clean install'
 alias mcis='mvn clean install -DskipTests'
 alias mcp='mvn clean package'
 alias mcps='mvn clean package -DskipTests'
-
-alias mvndev1='mvn -DDOMAIN=SCRN -DSERVER=DEV1 -DENV=DEV1'
-
 ### MVN ::::::::::::::          ######
 
 
@@ -112,8 +116,12 @@ squash() {
 }
 
 
-
 gcdp() {
 	git checkout develop;
+	gup
+}
+
+gcmp() {
+	git checkout master;
 	gup
 }
