@@ -125,3 +125,38 @@ gcmp() {
 	git checkout master;
 	gup
 }
+
+
+### Docker   ######
+alias dk='docker kill `(docker ps -q)`'
+alias dp='docker ps'
+
+alias ds='docker-stop'
+docker-stop() {
+	docker stop $(docker ps -q -f "name=$1");
+	docker rm $1;
+}
+
+alias bar='build-app-run'
+build-app-run () {
+	build-app \
+	build-docker-run $1
+}
+
+alias ba='build-app'
+build-app () {
+	cd applicationRoot; \
+	./gradlew clean build -x test; \
+	cd ..;
+}
+
+alias bdr='build-docker-run'
+build-docker-run () {
+	build-docker $1; \
+	docker container run --rm -p 8000:8000 -p 8080:8080 -e JPDA_ADDRESS=8000 --name $1 $1
+}
+
+alias bd='build-docker'
+build-docker() {
+	docker build -t $1 .
+}
