@@ -1,8 +1,12 @@
 #!/bin/bash
 
+alias prj='cd /c/dev/projects'
+alias aws='"C:\dev\tools\AWSCLI\aws.exe"'
+
 alias cc='clear'
 alias ll='ls -lah'
 alias lr='ls -larth'
+alias pwdd='pwd | sed 's:.*/::''
 
 alias bea='cd /c/BEA92/'
 alias bp='cd /c/BEA92/projects'
@@ -16,6 +20,7 @@ alias gaa='git add --all'
 alias gu='git add -u'
 
 alias gc='git commit'
+alias gcmm='git commit -m'
 alias gca='git commit --amend'
 alias gcaa='git commit --amend --author "Barry Evans <barryevans80@gmail.com>"'
 alias gcad='GIT_COMMITTER_DATE="`date`" git commit --amend --date "`date`"'
@@ -45,7 +50,8 @@ alias gcb='git checkout -b'
 
 alias gl='git log'
 alias glo='git log --oneline --all --decorate'
-alias glg='git log --graph --oneline --all --decorate'
+alias glg='git log --graph --oneline --decorate'
+alias glga='git log --graph --oneline --all --decorate'
 alias glgt='git log --graph --oneline --all --decorate -n 10'
 alias glp='git log --pretty=format:"%C(yellow)%h|%Cred%ad|%Creset%an|%Cgreen%d %Creset%s" --date=short'
 alias glpd='git log --pretty=format:"%C(yellow)%h|%Cred%ad|%Creset%an|%Cgreen%d %Creset%s" --date=short --relative-date'
@@ -56,6 +62,8 @@ alias gsa='git stash apply'
 alias gss='git stash show'
 alias gsl='git stash list'
 alias gspp='git stash;git pull;git stash pop;'
+
+alias gr='git revert '
 
 alias grh='git reset --hard'
 
@@ -79,6 +87,7 @@ alias gupm='git pull --no-commit --rebase origin master'
 alias gpu='git push'
 alias gpf='git push --force'
 alias gpft='git push --tags --force'
+alias gpfl='git push --force-with-lease'
 ### Git ::::::::::::::          ######
 
 
@@ -89,6 +98,9 @@ alias mci='mvn clean install'
 alias mcis='mvn clean install -DskipTests'
 alias mcp='mvn clean package'
 alias mcps='mvn clean package -DskipTests'
+
+alias msbr='mvn spring-boot:run'
+
 ### MVN ::::::::::::::          ######
 
 
@@ -98,11 +110,11 @@ alias npmv='npm --loglevel verbose'
 alias nin='npm install'
 ### Node/npm ::::::::::::::          ######
 
-alias ps='powershell'
+alias psh='powershell'
 
 
 
-###### Bash functions ######
+### Bash ::::::::::::::          ######
 sq2() {
 	squash 2
 }
@@ -126,8 +138,10 @@ gcmp() {
 	gup
 }
 
+### Bash ::::::::::::::          ######
 
-### Docker   ######
+
+### Docker ::::::::::::::          ######
 alias dk='docker kill `(docker ps -q)`'
 alias dp='docker ps'
 
@@ -137,26 +151,5 @@ docker-stop() {
 	docker rm $1;
 }
 
-alias bar='build-app-run'
-build-app-run () {
-	build-app \
-	build-docker-run $1
-}
 
-alias ba='build-app'
-build-app () {
-	cd applicationRoot; \
-	./gradlew clean build -x test; \
-	cd ..;
-}
-
-alias bdr='build-docker-run'
-build-docker-run () {
-	build-docker $1; \
-	docker container run --rm -p 8000:8000 -p 8080:8080 -e JPDA_ADDRESS=8000 --name $1 $1
-}
-
-alias bd='build-docker'
-build-docker() {
-	docker build -t $1 .
-}
+### Docker ::::::::::::::          ######
