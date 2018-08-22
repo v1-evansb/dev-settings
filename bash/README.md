@@ -4,8 +4,8 @@
 - Screen background
   - R:0 
   - G:0
-  - B:64
+  - B:80
 - Screen text
-   - R:128
-   - G:128
+   - R:187
+   - G:187
    - B:0
