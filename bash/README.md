@@ -1,5 +1,7 @@
 # Bash command prompt settings
 
+Look at .bash_profile -> .bashrc -> .aliasrc to see the many shortcuts I use on a dailty basis
+
 ## Colour settings
 - Screen background
   - R:0 
